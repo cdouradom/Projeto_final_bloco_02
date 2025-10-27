@@ -49,8 +49,12 @@ public class Produto { //indica que a classe é uma entidade do JPA
     private String foto; // Define o atributo foto do produto
 
     @ManyToOne // Define o relacionamento um-para-muitos com Categoria ( muitos produtos para uma categoria)
-	@JsonIgnoreProperties("produtos") // Ignora a propriedade produtos para evitar recursão infinita durante a serialização JSON
-	private Categoria categoria; // Define o atributo postagem como uma lista de Postagem
+	@JsonIgnoreProperties("produto") // Ignora a propriedade produtos para evitar recursão infinita durante a serialização JSON
+	private Categoria categoria; // Define o atributo produto como uma lista de Produto
+
+    @ManyToOne // Define o relacionamento um-para-muitos com Usuario ( muitos produtos para um usuario/vendedor)
+	@JsonIgnoreProperties("produto") // Ignora a propriedade produtos para evitar recursão infinita durante a serialização JSON
+	private Usuario usuario; // Define o atributo produto como uma lista de Produto
 
     //Getters e Setters
     public Long getId() {
@@ -115,6 +119,14 @@ public class Produto { //indica que a classe é uma entidade do JPA
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;  // Define o valor do atributo categoria
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

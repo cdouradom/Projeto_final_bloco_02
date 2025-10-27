@@ -36,7 +36,7 @@ public class Categoria { //indica que a classe é uma entidade do JPA
 	private String descricao; // Define o atributo descricao 
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE) // Define o relacionamento um-para-muitos com Produto ( uma categoria para muitos produtos)   
-	@JsonIgnoreProperties(value = "categoria", allowSetters = true) // Ignora a propriedade postagem para evitar recursão infinita durante a serialização JSON
+	@JsonIgnoreProperties(value = "categoria", allowSetters = true) // Ignora a propriedade produto para evitar recursão infinita durante a serialização JSON
 	private List<Produto> produto; // Define o atributo produto como uma lista de produto
 
     // Getters e Setters dos atributos
