@@ -1,10 +1,17 @@
 package com.generation.farmacia.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -27,6 +34,10 @@ public class Categoria { //indica que a classe é uma entidade do JPA
 	@NotBlank(message = "O atributo Descricao é obrigatório!") // Impedir que a descricao seja em branco
 	@Size(min = 10, max = 200, message = "O atributo Descricao deve conter no mínimo 10 e no máximo 200 caracteres") // Define o tamanho mínimo e máximo do campo
 	private String descricao; // Define o atributo descricao 
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE) // Define o relacionamento um-para-muitos com Produto ( uma categoria para muitos produtos)   
+	@JsonIgnoreProperties(value = "categoria", allowSetters = true) // Ignora a propriedade postagem para evitar recursão infinita durante a serialização JSON
+	private List<Produto> produto; // Define o atributo produto como uma lista de produto
 
     // Getters e Setters dos atributos
     public Long getId() { 
@@ -53,5 +64,14 @@ public class Categoria { //indica que a classe é uma entidade do JPA
         this.descricao = descricao;
     }
 
+    public List<Produto> getProduto() {
+        return produto;
+    }
+
+    public void setProduto(List<Produto> produto) {
+        this.produto = produto;
+    }
+
+    
 }
 
