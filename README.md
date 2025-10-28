@@ -159,6 +159,8 @@ PRODUTO {
   Long categoria_id
   Long usuario_id
 }
+  <img width="363" height="554" alt="image" src="https://github.com/user-attachments/assets/c2c81788-bbeb-48f9-a21e-d6cf97115b58" />
+
     </code></pre>
 
 </section>
