@@ -74,7 +74,7 @@ src
 
 <p>O bloco abaixo contém o diagrama de classes em formato Mermaid — ele pode ser renderizado por ferramentas que suportem Mermaid.</p>
 
-<pre><code class="language-mermaid">
+```mermaid
 classDiagram
 class Usuario {
   - id: Long
@@ -125,12 +125,12 @@ class Produto {
 
 Usuario --> Produto
 Categoria --> Produto
-    </code></pre>
+```
 
 <h3><strong>Diagrama Entidade-Relacional (DER)</strong></h3>
 
 <pre><code class="language-mermaid">
-  
+ 
 erDiagram
 USUARIO ||--o{ PRODUTO : "cadastra"
 CATEGORIA ||--o{ PRODUTO : "classifica"
@@ -159,6 +159,7 @@ PRODUTO {
   Long categoria_id
   Long usuario_id
 }
+
   <img width="363" height="554" alt="image" src="https://github.com/user-attachments/assets/c2c81788-bbeb-48f9-a21e-d6cf97115b58" />
 
     </code></pre>
